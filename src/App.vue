@@ -1,32 +1,47 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <header>
+      <nav>
+        <a>test</a>
+        <a>logo</a>
+      </nav>
+      <h1>Search for your favourite films</h1>
+      <form class="form-control" @submit.prevent="getResults()">
+        <input type="text" v-model="searchQuery">
+        <button type="submit">Search</button>
+      </form>
+    </header>
+
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+  const API_KEY = '804c3863f43ac032ec694ff81f291705'
+  const API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=`
 
-#nav {
-  padding: 30px;
+  import Home from './views/Home'
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  export default {
+    components: {
+      Home
+    },
+    data(){
+      return{
+        searchQuery: '',
+        filmDetails: []
+      }
+    },
+    methods: {
+      async getResults(){
+        const results = await fetch(`${API_URL}${this.searchQuery}`)
+        const data = await results.json();
+        this.filmDetails.push(data.results)
+      }
     }
   }
-}
+</script>
+
+<style lang="scss">
+
 </style>
