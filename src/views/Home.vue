@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  const API_KEY = '804c3863f43ac032ec694ff81f291705'
+  const API_KEY = process.env.VUE_APP_API_KEY
   const API_URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=`
 
   import SingleFilm from './SingleFilm'
