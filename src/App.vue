@@ -1,11 +1,5 @@
 <template>
   <div id="app">
-    <header>
-      <nav>
-        <a>test</a>
-        <a>logo</a>
-      </nav>
-    </header>
     <router-view/>
   </div>
 </template>
@@ -25,5 +19,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+  }
+  body{
+    background-color: #0F1014;
   }
 </style>
