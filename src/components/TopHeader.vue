@@ -6,16 +6,26 @@
         <span class="logo-text">Film<span class="logo-part">Lab</span>
         </span>
         </div>
-        <router-link to="cart">
-            <i class="far fa-heart like-btn"></i> 
-        </router-link>
+        <i class="far fa-heart like-btn" @click="isHidden = !isHidden"></i> 
+        <Cart v-if="!isHidden"/>
     </div>
   </div>
 </template>
 
 <script>
+
+import Cart from '../components/Cart'
+
 export default {
-    name: 'TopHeader'
+    name: 'TopHeader',
+    components: {
+        Cart
+    },
+    data(){
+        return{
+            isHidden: true
+        }
+    }
 }
 </script>
 
@@ -46,6 +56,7 @@ export default {
         .like-btn{
             color: #fff;
             text-decoration: none;
+            cursor: pointer;
         }
     }
 
