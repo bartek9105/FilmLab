@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss">
     .top-header{
-        max-width: 1640px;
+        width: 90%;
         margin: 0 auto;
         padding: 50px 20px;
         .logo{

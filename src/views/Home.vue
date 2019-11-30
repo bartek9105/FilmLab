@@ -53,12 +53,17 @@
     },
     methods: {
       async getResults(){
-        this.filmDetails = [];
-        const results = await fetch(`${API_URL_SEARCH}${this.searchQuery}`)
-        const data = await results.json();
-        data.results.forEach(item => {
-          this.filmDetails.push(item)
-        })
+        try{
+          this.filmDetails = [];
+          const results = await fetch(`${API_URL_SEARCH}${this.searchQuery}`)
+          const data = await results.json();
+          data.results.forEach(item => {
+            this.filmDetails.push(item)
+          })
+        }catch(error){
+          console.log(error);
+        }
+        this.searchQuery = ''
       }
     }
   }
@@ -91,12 +96,13 @@
           flex-direction: column;
           align-items: center;
           input{
-            width: 680px;
+            width: 500px;
             background-color: transparent;
             border: 1px solid #fff;
-            border-radius: 5%;
             margin-bottom: 50px;
-            height: 40px;
+            height: 30px;
+            color: #fff;
+            border-radius: 5px;
           }
           button{
             width: 180px;
@@ -105,6 +111,9 @@
             border: none;
             color: #fff;
             cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 5px;
           }
         }
       }
