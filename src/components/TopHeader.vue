@@ -6,6 +6,9 @@
         <span class="logo-text">Film<span class="logo-part">Lab</span>
         </span>
         </div>
+        <router-link to="cart">
+            <i class="far fa-heart like-btn"></i> 
+        </router-link>
     </div>
   </div>
 </template>
@@ -39,6 +42,10 @@ export default {
                     color: #FFA200;
                 }
             }
+        }
+        .like-btn{
+            color: #fff;
+            text-decoration: none;
         }
     }
 

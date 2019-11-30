@@ -1,5 +1,6 @@
 <template>
   <div>
+      <TopHeader/>
       <div class="single-details" v-for="film in singleFilmDetails">
           <p>{{ film.title }}</p>
       </div>
@@ -9,7 +10,11 @@
 <script>
     const API_KEY = process.env.VUE_APP_API_KEY
 
+    import TopHeader from '../components/TopHeader'
     export default {
+        components: {
+            TopHeader
+        },
         data(){
             return{
                 singleFilmDetails: [],

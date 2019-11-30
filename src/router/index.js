@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import SingleFilm from '../views/SingleFilm.vue'
+import Cart from '../components/Cart.vue'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,10 @@ const routes = [
   {
     path: '/film/:id',
     component: SingleFilm,
+  },
+  {
+    path: '/cart',
+    component: Cart
   }
 ]
 

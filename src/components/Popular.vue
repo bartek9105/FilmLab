@@ -1,23 +1,25 @@
 <template>
     <div>
     <section class="film-belt">
-        <router-link :to="'/film/' + film.id" class="film-item" v-for="film in films.slice(0, filmsToShow)" :key="film.id">
-            <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster" class="film-img">
-            <div class="film-title-like">
+        <div v-for="film in films.slice(0, filmsToShow)" :key="film.id">
+            <router-link :to="'/film/' + film.id" class="film-item" >
+                <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster" class="film-img">
                 <p>{{ film.title }}</p>
-                <i class="far fa-heart like-btn"></i>
-            </div>
-            <div class="film-details">
-                {{ film.release_date }}
-            </div>
-        </router-link>
+            </router-link>
+                <i class="far fa-heart like-btn" @click="addFavourite(film)"></i>
+                <div class="film-details">
+                    {{ film.release_date }}
+                </div>
+        </div>
+
         <button @click="loadMore">Show more</button>
     </section>
     </div>
 </template>
 
 <script>
-import { log } from 'util';
+
+import { mapState, mapMutations} from 'vuex'
 
 export default {
     name: 'Popular',
@@ -25,7 +27,8 @@ export default {
     data(){
         return{
             films: [],
-            filmsToShow: 6
+            filmsToShow: 6,
+            favourites: []
         }
     },
     async mounted(){
@@ -41,6 +44,12 @@ export default {
     methods: {
         loadMore(){
             this.filmsToShow += 6;
+        },
+        ...mapMutations([
+            'ADD_FAVOURITE'
+        ]),
+        addFavourite(film){
+            this.ADD_FAVOURITE(film)
         }
     }
 
@@ -61,14 +70,9 @@ export default {
             .film-img{
                 margin-bottom: 36px;
             }
-            .film-title-like{
-                display: flex;
-                justify-content: space-between;
-                .like-btn{
-                    opacity: .4;
-                }
-            }
         }
-
+        .like-btn{
+            cursor: pointer;
+        }
     }
 </style>
