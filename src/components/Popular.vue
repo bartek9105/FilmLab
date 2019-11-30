@@ -3,7 +3,13 @@
     <section class="film-belt">
         <router-link :to="'/film/' + film.id" class="film-item" v-for="film in films.slice(0, filmsToShow)" :key="film.id">
             <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster" class="film-img">
-            <p>{{ film.title }}</p>
+            <div class="film-title-like">
+                <p>{{ film.title }}</p>
+                <i class="far fa-heart like-btn"></i>
+            </div>
+            <div class="film-details">
+                {{ film.release_date }}
+            </div>
         </router-link>
         <button @click="loadMore">Show more</button>
     </section>
@@ -11,6 +17,7 @@
 </template>
 
 <script>
+import { log } from 'util';
 
 export default {
     name: 'Popular',
@@ -26,6 +33,9 @@ export default {
       const data = await res.json();
       data.results.forEach(item => {
         this.films.push(item)
+      })
+      this.films.map(item => {
+        item.release_date = [...item.release_date].slice(0,4).join('');
       })
     },
     methods: {
@@ -48,9 +58,17 @@ export default {
             text-decoration: none;
             text-transform: uppercase;
             font-size: 15px;
+            .film-img{
+                margin-bottom: 36px;
+            }
+            .film-title-like{
+                display: flex;
+                justify-content: space-between;
+                .like-btn{
+                    opacity: .4;
+                }
+            }
         }
-        .film-img{
-            margin-bottom: 36px;
-        }
+
     }
 </style>

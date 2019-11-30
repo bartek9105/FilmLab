@@ -14,7 +14,7 @@
       <section class="main">
         <router-link :to="'/film/' + film.id" class="film-item" v-for="film in filmDetails" :key="film.id">
           <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster">
-          <p>{{ film.title }} Like </p>
+            <p>{{ film.title }}</p>
         </router-link>
       </section>
 
