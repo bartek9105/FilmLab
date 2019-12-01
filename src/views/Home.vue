@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-        <Header>
+        <header>
+          <Navbar/>
           <div class="header-section">
             <h1>Search for your favourite films in our library</h1>
             <form class="form-control" @submit.prevent="getResults()">
@@ -8,7 +9,7 @@
               <button type="submit">Search</button>
             </form>
           </div>
-        </Header>
+        </header>
       <section class="main">
         <router-link :to="'/film/' + film.id" class="film-item" v-for="film in filmDetails" :key="film.id">
           <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster">
@@ -35,13 +36,13 @@
   const API_URL_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=`
   
   import Popular from '../components/Popular'
-  import Header from '../components/Header'
+  import Navbar from '../components/Navbar'
 
   export default {
     name: 'Home',
     components: {
       Popular,
-      Header
+      Navbar
     },
     data(){
       return{
@@ -79,7 +80,6 @@
   header{
     height: 500px;
     background-image: url('../assets/header-banner.jpg');
-
       .header-section{
         display: flex;
         justify-content: center;
