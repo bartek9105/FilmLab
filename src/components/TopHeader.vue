@@ -2,12 +2,15 @@
   <div>
     <div class="top-header">
         <div class="logo">
-        <i class="fas fa-video logo-icon"></i>
-        <span class="logo-text">Film<span class="logo-part">Lab</span>
-        </span>
+            <i class="fas fa-video logo-icon"></i>
+            <span class="logo-text">Film<span class="logo-part">Lab</span>
+            </span>
         </div>
-        <i class="far fa-heart like-btn" @click="isHidden = !isHidden"></i> 
-        <Cart v-if="!isHidden"/>
+        <div class="cart">
+            <i class="far fa-heart like-btn" @click="isHidden = !isHidden"></i> 
+            <Cart v-if="!isHidden"/>
+        </div>
+
     </div>
   </div>
 </template>
@@ -33,7 +36,10 @@ export default {
     .top-header{
         width: 90%;
         margin: 0 auto;
-        padding: 50px 20px;
+        padding: 30px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         .logo{
             display: flex;
             align-items: center;
@@ -53,11 +59,14 @@ export default {
                 }
             }
         }
-        .like-btn{
-            color: #fff;
-            text-decoration: none;
-            cursor: pointer;
+        .cart-btn{
+            .like-btn{
+                color: #fff;
+                text-decoration: none;
+                cursor: pointer;
+            }
         }
+
     }
 
 

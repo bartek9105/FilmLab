@@ -1,9 +1,10 @@
 <template>
   <div>
-      <TopHeader/>
-      <div class="single-details" v-for="film in singleFilmDetails">
-          <p>{{ film.title }}</p>
-      </div>
+        <TopHeader/>
+        <div class="single-details" v-for="film in singleFilmDetails">
+            <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster" class="poster">
+            <p>{{ film.title }}</p>
+        </div>
   </div>
 </template>
 
@@ -29,6 +30,6 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>

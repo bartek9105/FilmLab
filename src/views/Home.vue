@@ -75,26 +75,29 @@
     padding: 0;
   }
   body{
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #fff;
   }
   header{
-    height: 526px;
+    height: 500px;
     background-color: rgb(138, 87, 0);
+
       .header-section{
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
         flex-direction: column;
+        padding-top: 30px;
         h1{
           margin-bottom: 58px;
-          font-size: 39px;
+          font-size: 35px;
         }
         .form-control{
           display: flex;
           flex-direction: column;
           align-items: center;
+          padding: 0 10px;
           input{
             width: 500px;
             background-color: transparent;
@@ -114,6 +117,10 @@
             font-size: 18px;
             font-weight: 700;
             border-radius: 5px;
+            transition: .2s ease-in-out;
+              &:hover{
+                background-color: rgb(211, 134, 0);
+              }
           }
         }
       }
