@@ -1,16 +1,14 @@
 <template>
   <div class="home">
-      <header>
-        <TopHeader/>
-        <div class="header-section">
-          <h1>Search for your favourite films in our library</h1>
-          <form class="form-control" @submit.prevent="getResults()">
-            <input type="text" v-model="searchQuery" placeholder="Enter film title">
-            <button type="submit">Search</button>
-          </form>
-        </div>
-      </header>
-
+        <Header>
+          <div class="header-section">
+            <h1>Search for your favourite films in our library</h1>
+            <form class="form-control" @submit.prevent="getResults()">
+              <input type="text" v-model="searchQuery" placeholder="Enter film title">
+              <button type="submit">Search</button>
+            </form>
+          </div>
+        </Header>
       <section class="main">
         <router-link :to="'/film/' + film.id" class="film-item" v-for="film in filmDetails" :key="film.id">
           <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster">
@@ -37,13 +35,13 @@
   const API_URL_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=`
   
   import Popular from '../components/Popular'
-  import TopHeader from '../components/TopHeader'
+  import Header from '../components/Header'
 
   export default {
     name: 'Home',
     components: {
       Popular,
-      TopHeader
+      Header
     },
     data(){
       return{

@@ -1,17 +1,21 @@
 <template>
   <div>
-    <div class="top-header">
-        <div class="logo">
-            <i class="fas fa-video logo-icon"></i>
-            <span class="logo-text">Film<span class="logo-part">Lab</span>
-            </span>
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <i class="fas fa-video logo-icon"></i>
+                <span class="logo-text">Film<span class="logo-part">Lab</span>
+                </span>
+            </div>
+            <div class="cart">
+                <i class="far fa-heart like-btn" @click="isHidden = !isHidden"></i> 
+                <Cart v-if="!isHidden"/>
+            </div>
         </div>
-        <div class="cart">
-            <i class="far fa-heart like-btn" @click="isHidden = !isHidden"></i> 
-            <Cart v-if="!isHidden"/>
+        <div class="header-content">
+            <slot></slot>
         </div>
-
-    </div>
+    </header>
   </div>
 </template>
 
@@ -20,7 +24,7 @@
 import Cart from '../components/Cart'
 
 export default {
-    name: 'TopHeader',
+    name: 'Header',
     components: {
         Cart
     },
@@ -33,7 +37,7 @@ export default {
 </script>
 
 <style lang="scss">
-    .top-header{
+    .header-top{
         width: 90%;
         margin: 0 auto;
         padding: 30px 20px;
@@ -68,6 +72,10 @@ export default {
         }
 
     }
-
+    .header-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 </style>

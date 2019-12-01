@@ -1,20 +1,21 @@
 <template>
   <div>
-        <TopHeader/>
+        <Header>
         <div class="single-details" v-for="film in singleFilmDetails">
             <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster" class="poster">
             <p>{{ film.title }}</p>
         </div>
+        </Header>
   </div>
 </template>
 
 <script>
     const API_KEY = process.env.VUE_APP_API_KEY
 
-    import TopHeader from '../components/TopHeader'
+    import Header from '../components/Header'
     export default {
         components: {
-            TopHeader
+            Header
         },
         data(){
             return{
