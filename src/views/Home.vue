@@ -5,7 +5,7 @@
         <div class="header-section">
           <h1>Search for your favourite films in our library</h1>
           <form class="form-control" @submit.prevent="getResults()">
-            <input type="text" v-model="searchQuery">
+            <input type="text" v-model="searchQuery" placeholder="Enter film title">
             <button type="submit">Search</button>
           </form>
         </div>
@@ -80,7 +80,7 @@
   }
   header{
     height: 500px;
-    background-color: rgb(138, 87, 0);
+    background-image: url('../assets/header-banner.jpg');
 
       .header-section{
         display: flex;
@@ -101,11 +101,21 @@
           input{
             width: 500px;
             background-color: transparent;
-            border: 1px solid #fff;
+            border: none;
+            border-bottom: 1px solid rgb(163, 163, 163);
             margin-bottom: 50px;
             height: 30px;
             color: #fff;
-            border-radius: 5px;
+            outline: none;
+            transition: ease-in-out .2s;
+            &:focus{
+              border-bottom: 1px solid rgb(255, 255, 255);
+            }
+            &::placeholder{
+              color: #fff;
+              opacity: .5;
+
+            }
           }
           button{
             width: 180px;
