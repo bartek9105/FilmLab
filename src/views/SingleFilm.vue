@@ -1,19 +1,23 @@
 <template>
   <div> 
-    <div class="container" v-for="film in singleFilmDetails">
+    
+    <div class="container" v-for="film in filmDetails">
         <header>
             <Navbar/>
             <div class="single-details-header">
                 <h2>{{ film.title }}</h2>
-                <p>
+                <p>               </p>
+                <!--
                 {{ film.runtime }} min
                 <i class="fas fa-circle dot"></i>
                 {{ film.production_countries[0].iso_3166_1 }}
                 <i class="fas fa-circle dot"></i>
                 {{ film.genres[0].name }}
-                </p>
+
+         -->
             </div>
         </header>
+                <!--
         <section class="details">
             <h5>Details</h5>
             <table class="details-table">
@@ -55,8 +59,10 @@
                 <Popular type="similar"/>
             </section>
         </section>
+         -->
     </div>
   </div>
+
 </template>
 
 <script>
@@ -71,14 +77,24 @@
         },
         data(){
             return{
-                singleFilmDetails: [],
-                API_URL: `https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${API_KEY}&language=en-US`
+                filmDetails: [],
+                API_URL_DETAILS: `https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${API_KEY}&language=en-US`,
+                API_URL_VIDEOS: `https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?api_key=${API_KEY}&language=en-US`
             }
         },
-        async mounted(){
-            const res = await fetch(this.API_URL)
-            const details = await res.json();
-            this.singleFilmDetails.push(details)
+        mounted(){
+            Promise.all([
+                fetch(this.API_URL_DETAILS),
+                fetch(this.API_URL_VIDEOS)
+            ]).then(data => {
+                return Promise.all(data.map(el => el.json()));
+            }).then((data) => {
+                this.filmDetails.push(data[0])
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            
         }
     }
 </script>
