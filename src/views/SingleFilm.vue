@@ -60,14 +60,14 @@
                 <h5>Overview</h5>
                 <p>{{ film.overview }}</p>
             </div>
-            <div class="belts">
-                <h5>Similar</h5>
+            <div class="propositions">
+                <h5>Recommended if you like this movie</h5>
+                <SimilarAndRecommended type="recommendations"/>
+                <h5>Similar to this movie</h5>
+                <SimilarAndRecommended type="similar"/>
             </div>
         </section>
-        <h5>Recommended if you like this movie</h5>
-        <SimilarAndRecommended type="recommendations"/>
-        <h5>Similar to this movie</h5>
-        <SimilarAndRecommended type="similar"/>
+
     </div>
   </div>
 
@@ -164,6 +164,9 @@
             color: rgb(189, 189, 189);
             font-size: 13px;
             line-height: 1.7;
+        }
+        .propositions{
+            margin-top: 70px;
         }
     }
 </style>

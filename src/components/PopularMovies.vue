@@ -33,7 +33,6 @@ export default {
     },
     async mounted(){
       const res = await fetch(`https://api.themoviedb.org/3/movie/${this.type}?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=1`)
-
       const data = await res.json();
       data.results.forEach(item => {
         this.films.push(item)
