@@ -6,60 +6,64 @@
             <Navbar/>
             <div class="single-details-header">
                 <h2>{{ film.title }}</h2>
-                <p>               </p>
-                <!--
-                {{ film.runtime }} min
-                <i class="fas fa-circle dot"></i>
-                {{ film.production_countries[0].iso_3166_1 }}
-                <i class="fas fa-circle dot"></i>
-                {{ film.genres[0].name }}
-
-         -->
+                <p>               
+                    {{ film.runtime }} min
+                    <i class="fas fa-circle dot"></i>
+                    {{ film.production_countries[0].iso_3166_1 }}
+                    <i class="fas fa-circle dot"></i>
+                    {{ film.genres[0].name }}
+                </p>
             </div>
         </header>
-                <!--
         <section class="details">
-            <h5>Details</h5>
-            <table class="details-table">
-                <tr>
-                    <td>Genre</td>
-                    <td>{{ film.genres[0].name }}</td>
-                </tr>
-                <tr>
-                    <td>Original language</td>
-                    <td>{{ film.original_language }}</td>
-                </tr>
-                <tr>
-                    <td>Popularity</td>
-                    <td>{{ film.popularity }}</td>
-                </tr>
-                <tr>
-                    <td>Release date</td>
-                    <td>{{ film.release_date }}</td>
-                </tr>
-                <tr>
-                    <td>Runtime</td>
-                    <td>{{ film.runtime }} min</td>
-                </tr>
-                <tr>
-                    <td>Vote average</td>
-                    <td>{{ film.vote_average }}</td>
-                </tr>     
-                <tr>
-                    <td>Vote count</td>
-                    <td>{{ film.vote_count }}</td>
-                </tr>  
-            </table>
-
-            <h5>Overview</h5>
-            <p>{{ film.overview }}</p>
-
-            <section class="belts">
+            <div class="top-belt">
+                <div class="details-info">
+                    <h5>Details</h5>
+                    <table class="details-table">
+                            <tr>
+                                <td>Genre</td>
+                                <td>{{ film.genres[0].name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Original language</td>
+                                <td>{{ film.original_language }}</td>
+                            </tr>
+                            <tr>
+                                <td>Popularity</td>
+                                <td>{{ film.popularity }}</td>
+                            </tr>
+                            <tr>
+                                <td>Release date</td>
+                                <td>{{ film.release_date }}</td>
+                            </tr>
+                            <tr>
+                                <td>Runtime</td>
+                                <td>{{ film.runtime }} min</td>
+                            </tr>
+                            <tr>
+                                <td>Vote average</td>
+                                <td>{{ film.vote_average }}</td>
+                            </tr>     
+                            <tr>
+                                <td>Vote count</td>
+                                <td>{{ film.vote_count }}</td>
+                            </tr>  
+                    </table>
+                </div>
+                <div class="trailer" v-for="video in videos">
+                    <iframe width="672" height="368"
+                    :src="'https://www.youtube.com/embed/' + video.key">
+                    </iframe>
+                </div>
+            </div>
+            <div class="overview">
+                <h5>Overview</h5>
+                <p>{{ film.overview }}</p>
+            </div>
+            <div class="belts">
                 <h5>Similar</h5>
-                <Popular type="similar"/>
-            </section>
+            </div>
         </section>
-         -->
     </div>
   </div>
 
@@ -78,6 +82,7 @@
         data(){
             return{
                 filmDetails: [],
+                videos: [],
                 API_URL_DETAILS: `https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${API_KEY}&language=en-US`,
                 API_URL_VIDEOS: `https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?api_key=${API_KEY}&language=en-US`
             }
@@ -90,11 +95,12 @@
                 return Promise.all(data.map(el => el.json()));
             }).then((data) => {
                 this.filmDetails.push(data[0])
+                this.videos.push(data[1].results[0])
             })
             .catch(err => {
                 console.log(err)
             })
-            
+            console.log(this.videos.key)
         }
     }
 </script>
@@ -124,22 +130,34 @@
     .details{
         width: 90%;
         margin: 0 auto;
+        padding: 70px 0;
+        .top-belt{
+            display: flex;
+            justify-content: space-between;
+            .details-table{
+                text-transform: uppercase;
+                color: rgb(189, 189, 189);
+                font-size: 13px;
+                td{
+                    padding: 0 40px 30px 0;
+                }
+            }
+            .trailer{
+                iframe{
+                    border: none;
+                }
+            }
+        }
         h5{
             text-transform: uppercase;
             font-size: 20px;
-            margin: 70px 0 35px 0;
+            margin-bottom: 35px;
         }
-        .details-table{
-            text-transform: uppercase;
-            color: rgb(189, 189, 189);
-            font-size: 13px;
-            td{
-                padding: 0 40px 30px 0;
-            }
-        }
+
         p{
             color: rgb(189, 189, 189);
             font-size: 13px;
+            line-height: 1.7;
         }
     }
 </style>
