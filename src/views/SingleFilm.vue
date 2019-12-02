@@ -16,58 +16,65 @@
             </div>
         </header>
         <section class="details">
-            <div class="top-belt">
-                <div class="details-info">
-                    <h5>Details</h5>
-                    <table class="details-table">
-                            <tr>
-                                <td>Genre</td>
-                                <td>{{ film.genres[0].name }}</td>
-                            </tr>
-                            <tr>
-                                <td>Original language</td>
-                                <td>{{ film.original_language }}</td>
-                            </tr>
-                            <tr>
-                                <td>Popularity</td>
-                                <td>{{ film.popularity }}</td>
-                            </tr>
-                            <tr>
-                                <td>Release date</td>
-                                <td>{{ film.release_date }}</td>
-                            </tr>
-                            <tr>
-                                <td>Runtime</td>
-                                <td>{{ film.runtime }} min</td>
-                            </tr>
-                            <tr>
-                                <td>Vote average</td>
-                                <td>{{ film.vote_average }}</td>
-                            </tr>     
-                            <tr>
-                                <td>Vote count</td>
-                                <td>{{ film.vote_count }}</td>
-                            </tr>  
-                    </table>
+            <div class="container">
+                <div class="left-section">
+                    <div class="details-info">
+                        <h5>Details</h5>
+                        <table class="details-table">
+                                <tr>
+                                    <td>Genre</td>
+                                    <td>{{ film.genres[0].name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Original language</td>
+                                    <td>{{ film.original_language }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Popularity</td>
+                                    <td>{{ film.popularity }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Release date</td>
+                                    <td>{{ film.release_date }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Runtime</td>
+                                    <td>{{ film.runtime }} min</td>
+                                </tr>
+                                <tr>
+                                    <td>Vote average</td>
+                                    <td>{{ film.vote_average }}</td>
+                                </tr>     
+                                <tr>
+                                    <td>Vote count</td>
+                                    <td>{{ film.vote_count }}</td>
+                                </tr>  
+                        </table>
+                    </div>
+                    <div class="overview">
+                        <h5>Overview</h5>
+                        <p>{{ film.overview }}</p>
+                    </div>
+                    <div class="overview">
+                        <h5>Reviews</h5>
+                        <p>Reviews will be here</p>
+                    </div>
                 </div>
-                <div class="trailer" v-for="video in videos">
-                    <iframe width="672" height="368"
-                    :src="'https://www.youtube.com/embed/' + video.key">
-                    </iframe>
+                <div class="right-section">
+                    <div class="trailer" v-for="video in videos">
+                        <iframe width="672" height="368"
+                        :src="'https://www.youtube.com/embed/' + video.key">
+                        </iframe>
+                    </div>
                 </div>
             </div>
-            <div class="overview">
-                <h5>Overview</h5>
-                <p>{{ film.overview }}</p>
-            </div>
-            <div class="propositions">
+            <section class="propositions">
                 <h5>Recommended if you like this movie</h5>
                 <SimilarAndRecommended type="recommendations"/>
                 <h5>Similar to this movie</h5>
                 <SimilarAndRecommended type="similar"/>
-            </div>
+            </section>
         </section>
-
     </div>
   </div>
 
@@ -112,6 +119,16 @@
 </script>
 
 <style lang="scss" scoped>
+    h5{
+        text-transform: uppercase;
+        font-size: 20px;
+        margin-bottom: 35px;
+    }
+    p{
+        color: rgb(189, 189, 189);
+        font-size: 13px;
+        line-height: 1.7;
+    }
     .single-details-header{
         width: 90%;
         margin: 0 auto;
@@ -137,36 +154,31 @@
         width: 90%;
         margin: 0 auto;
         padding: 70px 0;
-        .top-belt{
+        .container{
             display: flex;
             justify-content: space-between;
-            .details-table{
-                text-transform: uppercase;
-                color: rgb(189, 189, 189);
-                font-size: 13px;
-                td{
-                    padding: 0 40px 30px 0;
+                .left-section{
+                    .details-info{
+                        .details-table{
+                            text-transform: uppercase;
+                            color: rgb(189, 189, 189);
+                            font-size: 13px;
+                            td{
+                                padding: 0 40px 30px 0;
+                            }
+                        }
+                    }
                 }
-            }
-            .trailer{
-                iframe{
-                    border: none;
+                .right-section{
+                    .trailer{
+                        iframe{
+                            border: none;
+                        }
+                    }
                 }
-            }
-        }
-        h5{
-            text-transform: uppercase;
-            font-size: 20px;
-            margin-bottom: 35px;
-        }
-
-        p{
-            color: rgb(189, 189, 189);
-            font-size: 13px;
-            line-height: 1.7;
-        }
-        .propositions{
-            margin-top: 70px;
+                .propositions{
+                    margin-top: 70px;
+                }
         }
     }
 </style>
