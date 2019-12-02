@@ -100,20 +100,25 @@
                 API_URL_VIDEOS: `https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?api_key=${API_KEY}&language=en-US`
             }
         },
+        methods: {
+            getDetailsAndVideos(){
+                Promise.all([
+                    fetch(this.API_URL_DETAILS),
+                    fetch(this.API_URL_VIDEOS)
+                ]).then(data => {
+                    return Promise.all(data.map(el => el.json()));
+                }).then((data) => {
+                    this.filmDetails.push(data[0])
+                    this.videos.push(data[1].results[0])
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+                console.log(this.videos.key)
+            }
+        },
         mounted(){
-            Promise.all([
-                fetch(this.API_URL_DETAILS),
-                fetch(this.API_URL_VIDEOS)
-            ]).then(data => {
-                return Promise.all(data.map(el => el.json()));
-            }).then((data) => {
-                this.filmDetails.push(data[0])
-                this.videos.push(data[1].results[0])
-            })
-            .catch(err => {
-                console.log(err)
-            })
-            console.log(this.videos.key)
+            this.getDetailsAndVideos();
         }
     }
 </script>

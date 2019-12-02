@@ -31,14 +31,17 @@ export default {
     methods: {
         loadMore(){
             this.filmsToShow += 6;
+        },
+        async getSimilarAndRecommended(){
+            const res = await fetch(this.API_URL)
+            const data = await res.json()
+            data.results.forEach(item => {
+                this.films.push(item)
+            })
         }
     },
-    async mounted(){
-        const res = await fetch(this.API_URL)
-        const data = await res.json()
-        data.results.forEach(item => {
-            this.films.push(item)
-        })
+    mounted(){
+        this.getSimilarAndRecommended();
     }
 }
 </script>

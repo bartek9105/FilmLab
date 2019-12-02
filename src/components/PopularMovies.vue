@@ -31,16 +31,6 @@ export default {
             favourites: []
         }
     },
-    async mounted(){
-      const res = await fetch(`https://api.themoviedb.org/3/movie/${this.type}?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=1`)
-      const data = await res.json();
-      data.results.forEach(item => {
-        this.films.push(item)
-      })
-      this.films.map(item => {
-        item.release_date = [...item.release_date].slice(0,4).join('');
-      })
-    },
     methods: {
         loadMore(){
             this.filmsToShow += 6;
@@ -50,8 +40,21 @@ export default {
         ]),
         addFavourite(film){
             this.ADD_FAVOURITE(film)
+        },
+        async getPopular(){
+            const res = await fetch(`https://api.themoviedb.org/3/movie/${this.type}?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=1`)
+            const data = await res.json();
+            data.results.forEach(item => {
+                this.films.push(item)
+            })
+            this.films.map(item => {
+                item.release_date = [...item.release_date].slice(0,4).join('');
+            })
         }
-    }
+    },
+    mounted(){
+        this.getPopular()
+    },
 
 }
 </script>
