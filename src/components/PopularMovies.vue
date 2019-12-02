@@ -6,10 +6,10 @@
                 <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster" class="film-img">
                 <p>{{ film.title }}</p>
             </router-link>
-                <i class="far fa-heart like-btn" @click="addFavourite(film)"></i>
-                <div class="film-details">
-                    {{ film.release_date }}
-                </div>
+            <i class="far fa-heart like-btn" @click="addFavourite(film)"></i>
+            <div class="film-details">
+                {{ film.release_date }}
+            </div>
         </div>
 
         <button @click="loadMore">Show more</button>
@@ -22,7 +22,7 @@
 import { mapState, mapMutations} from 'vuex'
 
 export default {
-    name: 'Popular',
+    name: 'PopularMovies',
     props: ['type'],
     data(){
         return{
@@ -33,6 +33,7 @@ export default {
     },
     async mounted(){
       const res = await fetch(`https://api.themoviedb.org/3/movie/${this.type}?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=1`)
+
       const data = await res.json();
       data.results.forEach(item => {
         this.films.push(item)

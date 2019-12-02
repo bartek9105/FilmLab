@@ -64,6 +64,10 @@
                 <h5>Similar</h5>
             </div>
         </section>
+        <h5>Recommended if you like this movie</h5>
+        <SimilarAndRecommended type="recommendations"/>
+        <h5>Similar to this movie</h5>
+        <SimilarAndRecommended type="similar"/>
     </div>
   </div>
 
@@ -73,11 +77,13 @@
     const API_KEY = process.env.VUE_APP_API_KEY
 
     import Navbar from '../components/Navbar'
-    import Popular from '../components/Popular'
+    import PopularMovies from '../components/PopularMovies'
+    import SimilarAndRecommended from '../components/SimilarAndRecommended'
     export default {
         components: {
             Navbar,
-            Popular
+            PopularMovies,
+            SimilarAndRecommended
         },
         data(){
             return{

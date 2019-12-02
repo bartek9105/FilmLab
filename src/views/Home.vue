@@ -19,13 +19,13 @@
 
       <section class="belts">
         <h2>Popular</h2>
-        <Popular type="popular"/>
+        <PopularMovies type="popular"/>
 
         <h2>Upcoming</h2>
-        <Popular type="upcoming"/>
+        <PopularMovies type="upcoming"/>
 
         <h2>Top rated</h2>
-        <Popular type="top_rated"/>
+        <PopularMovies type="top_rated"/>
       </section>
 
   </div>
@@ -35,13 +35,13 @@
   const API_KEY = process.env.VUE_APP_API_KEY
   const API_URL_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=`
   
-  import Popular from '../components/Popular'
+  import PopularMovies from '../components/PopularMovies'
   import Navbar from '../components/Navbar'
 
   export default {
     name: 'Home',
     components: {
-      Popular,
+      PopularMovies,
       Navbar
     },
     data(){
