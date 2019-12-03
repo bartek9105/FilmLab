@@ -1,11 +1,13 @@
 <template>
   <div>
     <div class="header-top">
-        <div class="logo">
-            <i class="fas fa-video logo-icon"></i>
-            <span class="logo-text">Film<span class="logo-part">Lab</span>
-            </span>
-        </div>
+        <router-link to="/">
+            <div class="logo">
+                <i class="fas fa-video logo-icon"></i>
+                <span class="logo-text">Film<span class="logo-part">Lab</span>
+                </span>
+            </div>
+        </router-link>
         <div class="cart">
             <i class="fas fa-heart like-btn" @click="isHidden = !isHidden"></i> 
             <Cart v-if="!isHidden"/>

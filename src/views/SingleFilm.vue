@@ -75,7 +75,9 @@
                 <SimilarAndRecommended type="similar"/>
             </section>
         </section>
+
     </div>
+
   </div>
 
 </template>
