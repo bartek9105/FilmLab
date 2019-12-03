@@ -10,10 +10,15 @@ export default new Vuex.Store({
   mutations: {
     ADD_FAVOURITE: (state, favourite) => {
       state.favourites.push(favourite)
+    },
+    REMOVE_FAVOURITE: (state, favourite) => {
+      state.favourites.splice(favourite, 1)
     }
   },
   actions: {
-
+    removeFavourite: (context, link) => {
+      context.commit("REMOVE_FAVOURITE", link)
+    }
   },
   modules: {
   }

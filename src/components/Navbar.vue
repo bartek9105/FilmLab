@@ -60,7 +60,8 @@ export default {
                 }
             }
         }
-        .cart-btn{
+        .cart{
+            position: relative;
             .like-btn{
                 color: #fff;
                 text-decoration: none;
