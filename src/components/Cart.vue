@@ -35,6 +35,11 @@ export default {
         ]),
         deleteFavourite(index){
             this.removeFavourite(index)
+            this.$toasted.show('Film removed', {
+                position: "bottom-center",
+                duration: 2000,
+                className: ['custom-toast']
+            })
         }
     }
 }

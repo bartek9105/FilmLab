@@ -42,6 +42,11 @@ export default {
         ]),
         addFavourite(film){
             this.ADD_FAVOURITE(film)
+            this.$toasted.show('Film added to favourites!', {
+                position: "bottom-center",
+                duration: 2000,
+                className: ['custom-toast']
+            });
         },
         async getPopular(){
             const res = await fetch(`https://api.themoviedb.org/3/movie/${this.type}?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=1`)
@@ -62,6 +67,9 @@ export default {
 </script>
 
 <style lang="scss">
+    .custom-toast{
+        background-color: #FFA200 !important;
+    }
     .film-belt{
         display: flex;
         align-items: center;
