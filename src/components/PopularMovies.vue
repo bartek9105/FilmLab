@@ -1,7 +1,7 @@
 <template>
     <div>
         <section class="film-belt">
-            <div v-for="film in films.slice(0, filmsToShow)" :key="film.id">
+            <div v-for="(film, index) in films.slice(0, filmsToShow)" :key="index">
                 <router-link :to="'/film/' + film.id" class="film-item" >
                     <div class="img-container">
                         <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster" class="film-img">
@@ -9,7 +9,7 @@
                     </div>
                     <p>{{ film.title }}</p>
                 </router-link>
-                <i class="far fa-heart like-btn" @click="addFavourite(film)"></i>
+                <i class="far fa-heart like-btn" :class="[selectedFilm === film.id ? 'likedBtn' : '']" @click="addFavourite(film)"></i>
                 <div class="film-details">
                     {{ film.release_date }}
                 </div>
@@ -30,7 +30,8 @@ export default {
         return{
             films: [],
             filmsToShow: 6,
-            favourites: []
+            favourites: [],
+            selectedFilm: null
         }
     },
     methods: {
@@ -47,6 +48,8 @@ export default {
                 duration: 2000,
                 className: ['custom-toast']
             });
+            this.selectedFilm = film.id
+            
         },
         async getPopular(){
             const res = await fetch(`https://api.themoviedb.org/3/movie/${this.type}?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=1`)
@@ -126,6 +129,9 @@ export default {
             &:hover{
                 color: #FFA200;
             }
+        }
+        .likedBtn{
+            color: #FFA200;
         }
     }
 </style>
