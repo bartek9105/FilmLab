@@ -51,9 +51,6 @@ export default {
         ]),
         addFavourite(film){
             this.ADD_FAVOURITE(film)
-            this.$toasted.global.app_notification({
-                message: "Film added to favourites!"
-            })
         }
     },
     mounted(){
