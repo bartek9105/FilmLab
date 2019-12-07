@@ -9,7 +9,7 @@
                     </div>
                     <p>{{ film.title }}</p>
                 </router-link>
-                <i class="far fa-heart like-btn" :class="[selectedFilm === film.id ? 'likedBtn' : '']" @click="addFavourite(film)"></i>
+                <i class="far fa-heart like-btn" :class="[selectedFilm === film.id ? 'fas likedBtn' : '']" @click="addFavourite(film)"></i>
                 <div class="film-details">
                     {{ film.release_date }}
                 </div>
@@ -43,13 +43,10 @@ export default {
         ]),
         addFavourite(film){
             this.ADD_FAVOURITE(film)
-            this.$toasted.show('Film added to favourites!', {
-                position: "bottom-center",
-                duration: 2000,
-                className: ['custom-toast']
-            });
+            this.$toasted.global.app_notification({
+                message: "Film added to favourites!"
+            })
             this.selectedFilm = film.id
-            
         },
         async getPopular(){
             const res = await fetch(`https://api.themoviedb.org/3/movie/${this.type}?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=1`)

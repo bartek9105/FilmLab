@@ -21,6 +21,8 @@
 
 <script>
 
+import { mapState, mapMutations } from 'vuex'
+
 const API_KEY = process.env.VUE_APP_API_KEY
 
 export default {
@@ -42,6 +44,15 @@ export default {
             const data = await res.json()
             data.results.forEach(item => {
                 this.films.push(item)
+            })
+        },
+        ...mapMutations([
+            'ADD_FAVOURITE'
+        ]),
+        addFavourite(film){
+            this.ADD_FAVOURITE(film)
+            this.$toasted.global.app_notification({
+                message: "Film added to favourites!"
             })
         }
     },

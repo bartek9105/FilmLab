@@ -8,6 +8,22 @@ Vue.config.productionTip = false
 
 Vue.use(Toasted)
 
+let options = {
+  type : 'show',
+  position: 'bottom-center',
+  duration: 2000,
+  className: ['custom-toast']
+}
+
+Vue.toasted.register('app_notification', payload => {
+        if(!payload.message) {
+    	    return "Error"
+        }
+        return payload.message;
+    },
+    options
+)
+
 new Vue({
   router,
   store,
