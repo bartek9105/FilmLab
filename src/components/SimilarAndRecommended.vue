@@ -47,10 +47,10 @@ export default {
             })
         },
         ...mapMutations([
-            'ADD_FAVOURITE'
+            'ADD_AND_REMOVE_FAVOURITE'
         ]),
         addFavourite(film){
-            this.ADD_FAVOURITE(film)
+            this.ADD_AND_REMOVE_FAVOURITE(film)
         }
     },
     mounted(){

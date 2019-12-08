@@ -6,7 +6,7 @@
                 <div class="col">
                     <span class="title">{{ favourite.title }}</span>
                     <span class="date">{{ favourite.release_date }}</span>
-                    <button @click="deleteFavourite(index)" class="delete-btn">Delete</button>
+                    <button class="delete-btn">Delete</button>
                 </div>
             </li>
         </ul>
@@ -30,15 +30,6 @@ export default {
         ])
     },
     methods: {
-        ...mapActions([
-            'removeFavourite'
-        ]),
-        deleteFavourite(index){
-            this.removeFavourite(index)
-            this.$toasted.global.app_notification({
-                message: "Film removed"
-            })
-        }
     }
 }
 </script>

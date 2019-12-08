@@ -17,22 +17,15 @@ export default new Vuex.Store({
     favourites: []
   },
   mutations: {
-    ADD_FAVOURITE: (state, favourite) => {
+    ADD_AND_REMOVE_FAVOURITE: (state, favourite) => {
       if(!state.favourites.includes(favourite)){
         state.favourites.push(favourite)
         Vue.toasted.show('Film added to favourites', options);
       }else{
-        Vue.toasted.show('Film is already in favourites', options);
+        state.favourites.splice(favourite, 1)
+        Vue.toasted.show('Film removed from favourites', options);
       }
     },
-    REMOVE_FAVOURITE: (state, favourite) => {
-      state.favourites.splice(favourite, 1)
-    }
-  },
-  actions: {
-    removeFavourite: (context, link) => {
-      context.commit("REMOVE_FAVOURITE", link)
-    }
   },
   modules: {
   }

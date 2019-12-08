@@ -9,7 +9,10 @@
                     </div>
                     <p>{{ film.title }}</p>
                 </router-link>
-                <i class="far fa-heart like-btn" :class="{liked: 'likeBtn'}" @click="addFavourite(film)"></i>
+                <a href="#" @click.prevent="film.isLiked = !film.isLiked">
+                    <i :class="['far', 'fa-heart', 'like-btn', {'likedBtn': film.isLiked}]" @click="addFavourite(film)"></i>
+                </a>
+
                 <div class="film-details">
                     {{ film.release_date }}
                 </div>
@@ -30,19 +33,22 @@ export default {
         return{
             films: [],
             filmsToShow: 6,
-            selectedFilm: null,
-            liked: false
         }
+    },
+    computed: {
+        ...mapState([
+            'favourites'
+        ])
     },
     methods: {
         loadMore(){
             this.filmsToShow += 6;
         },
         ...mapMutations([
-            'ADD_FAVOURITE'
+            'ADD_AND_REMOVE_FAVOURITE'
         ]),
         addFavourite(film){
-            this.ADD_FAVOURITE(film)
+            this.ADD_AND_REMOVE_FAVOURITE(film)
         },
         async getPopular(){
             const res = await fetch(`https://api.themoviedb.org/3/movie/${this.type}?api_key=${process.env.VUE_APP_API_KEY}&language=en-US&page=1`)
@@ -51,7 +57,8 @@ export default {
                 this.films.push(item)
             })
             this.films.map(item => {
-                item.release_date = [...item.release_date].slice(0,4).join('');
+                item.release_date = [...item.release_date].slice(0,4).join('')
+                this.$set(item, 'isLiked', false)
             })
         }
     },
