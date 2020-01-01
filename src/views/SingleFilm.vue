@@ -1,6 +1,5 @@
 <template>
   <div> 
-    
     <div class="container" v-for="film in filmDetails">
         <header>
             <Navbar/>
@@ -75,11 +74,8 @@
                 <SimilarAndRecommended type="similar"/>
             </section>
         </section>
-
     </div>
-
   </div>
-
 </template>
 
 <script>

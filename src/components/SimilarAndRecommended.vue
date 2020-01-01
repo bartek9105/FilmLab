@@ -1,20 +1,25 @@
 <template>
       <div>
         <section class="film-belt">
-            <div v-for="film in films.slice(0, filmsToShow)" :key="film.id">
-                <router-link :to="'/film/' + film.id" class="film-item" >
-                    <div class="img-container">
-                        <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster" class="film-img">
-                        <div class="middle"></div>
+            <div class="film-container">
+                <div v-for="film in films.slice(0, filmsToShow)" :key="film.id">
+                    <router-link :to="'/film/' + film.id" class="film-item" >
+                        <div class="img-container">
+                            <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster" class="film-img">
+                            <div class="middle"></div>
+                        </div>
+                        <p>{{ film.title }}</p>
+                    </router-link>
+                    <i class="far fa-heart like-btn" @click="addFavourite(film)"></i>
+                    <div class="film-details">
+                        {{ film.release_date }}
                     </div>
-                    <p>{{ film.title }}</p>
-                </router-link>
-                <i class="far fa-heart like-btn" @click="addFavourite(film)"></i>
-                <div class="film-details">
-                    {{ film.release_date }}
                 </div>
             </div>
-            <button @click="loadMore">Show more</button>
+            <button class="show-more-btn" @click="loadMore">
+                See more
+                <i class="fas fa-chevron-down"></i>
+            </button>
         </section>
     </div>
 </template>

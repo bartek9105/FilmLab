@@ -1,22 +1,21 @@
 <template>
   <div class="home">
-        <header>
-          <Navbar/>
-          <div class="header-section">
-            <h1>Search for your favourite films in our library</h1>
-            <form class="form-control" @submit.prevent="getResults()">
-              <input type="text" v-model="searchQuery" placeholder="Enter film title">
-              <button type="submit">Search</button>
-            </form>
-          </div>
-        </header>
+      <header>
+        <Navbar/>
+        <div class="header-section">
+          <h1>Search for your favourite films in our library</h1>
+          <form class="form-control" @submit.prevent="getResults()">
+            <input type="text" v-model="searchQuery" placeholder="Enter film title">
+            <button type="submit">Search</button>
+          </form>
+        </div>
+      </header>
       <section class="main">
         <router-link :to="'/film/' + film.id" class="film-item" v-for="film in filmDetails" :key="film.id">
-          <img :src="'http://image.tmdb.org/t/p/w185'+film.poster_path" alt="poster">
+          <img :src="'http://image.tmdb.org/t/p/w185' + film.poster_path" alt="poster">
             <p>{{ film.title }}</p>
         </router-link>
       </section>
-
       <section class="belts">
         <h2>Popular</h2>
         <PopularMovies type="popular"/>
@@ -140,7 +139,7 @@
   }
   .belts{
     max-width: 1640px;
-    margin: 0;
+    margin: 0 auto;
     padding: 72px 20px;
   }
 </style>
