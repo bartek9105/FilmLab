@@ -1,6 +1,6 @@
 <template>
     <div class="cart">
-        <ul>
+        <ul class="cart-list">
             <li v-for="(favourite, index) in favourites" :key="index">
                 <img :src="'http://image.tmdb.org/t/p/w92' + favourite.poster_path" alt="favourite.title" class="cart-poster">
                 <div class="col">
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss">
-    ul{
+    .cart-list{
         background-color: #fff;
         list-style: none;
         color: #000;

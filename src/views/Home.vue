@@ -26,7 +26,7 @@
         <h2>Top rated</h2>
         <PopularMovies type="top_rated"/>
       </section>
-
+      <Footer/>
   </div>
 </template>
 
@@ -36,12 +36,14 @@
   
   import PopularMovies from '../components/PopularMovies'
   import Navbar from '../components/Navbar'
+  import Footer from '../components/Footer'
 
   export default {
     name: 'Home',
     components: {
       PopularMovies,
-      Navbar
+      Navbar,
+      Footer
     },
     data(){
       return{
