@@ -55,9 +55,11 @@
                         <p>{{ film.overview }}</p>
                     </div>
                         <h5>Reviews</h5>
-                    <div class="overview" v-for="review in reviews[0]">
-                        <p>{{ review.content }}</p>
-                    </div>
+                        <carousel :perPage="1">
+                            <slide v-for="(review, index) in reviews[0]">
+                                {{ review.content }}
+                            </slide>
+                        </carousel>
                 </div>
                 <div class="right-section">
                     <div class="trailer" v-for="video in videos">
@@ -82,12 +84,17 @@
 <script>
     const API_KEY = process.env.VUE_APP_API_KEY
 
+    import { Carousel, Slide } from 'vue-carousel';
+
     import Navbar from '../components/Navbar'
     import PopularMovies from '../components/PopularMovies'
     import SimilarAndRecommended from '../components/SimilarAndRecommended'
     import Footer from '../components/Footer'
+
     export default {
         components: {
+            Carousel,
+            Slide,
             Navbar,
             PopularMovies,
             SimilarAndRecommended,
