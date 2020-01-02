@@ -2,10 +2,8 @@
   <div>
     <div class="header-top">
         <router-link to="/">
-            <div class="logo">
-                <i class="fas fa-video logo-icon"></i>
-                <span class="logo-text">Film<span class="logo-part">Lab</span>
-                </span>
+            <div class="logo-container">
+                <Logo/>
             </div>
         </router-link>
         <div class="cart">
@@ -19,11 +17,13 @@
 <script>
 
 import Cart from '../components/Cart'
+import Logo from '../components/Logo'
 
 export default {
     name: 'Navbar',
     components: {
-        Cart
+        Cart,
+        Logo
     },
     data(){
         return{
@@ -41,24 +41,9 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .logo{
+        .logo-container{
             display: flex;
             align-items: center;
-            .logo-icon{
-                color: #fff;
-                padding: 6px;
-                background-color: #FFA200;
-                border-radius: 50%;
-                margin-right: 20px;
-            }
-            .logo-text{
-                font-size: 25px;
-                font-weight: 700;
-                color: #fff;
-                .logo-part{
-                    color: #FFA200;
-                }
-            }
         }
         .cart{
             position: relative;

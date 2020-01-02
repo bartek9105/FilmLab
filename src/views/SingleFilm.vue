@@ -75,6 +75,7 @@
             </section>
         </section>
     </div>
+    <Footer/>
   </div>
 </template>
 
@@ -84,11 +85,13 @@
     import Navbar from '../components/Navbar'
     import PopularMovies from '../components/PopularMovies'
     import SimilarAndRecommended from '../components/SimilarAndRecommended'
+    import Footer from '../components/Footer'
     export default {
         components: {
             Navbar,
             PopularMovies,
-            SimilarAndRecommended
+            SimilarAndRecommended,
+            Footer
         },
         data(){
             return{
