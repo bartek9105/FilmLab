@@ -54,9 +54,9 @@
                         <h5>Overview</h5>
                         <p>{{ film.overview }}</p>
                     </div>
-                    <div class="overview">
                         <h5>Reviews</h5>
-                        <p>Reviews will be here</p>
+                    <div class="overview" v-for="review in reviews[0]">
+                        <p>{{ review.content }}</p>
                     </div>
                 </div>
                 <div class="right-section">
@@ -97,25 +97,29 @@
             return{
                 filmDetails: [],
                 videos: [],
+                reviews: [],
                 API_URL_DETAILS: `https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${API_KEY}&language=en-US`,
-                API_URL_VIDEOS: `https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?api_key=${API_KEY}&language=en-US`
+                API_URL_VIDEOS: `https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?api_key=${API_KEY}&language=en-US`,
+                API_URL_REVIEWS: `https://api.themoviedb.org/3/movie/${this.$route.params.id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
             }
         },
         methods: {
             getDetailsAndVideos(){
                 Promise.all([
                     fetch(this.API_URL_DETAILS),
-                    fetch(this.API_URL_VIDEOS)
+                    fetch(this.API_URL_VIDEOS),
+                    fetch(this.API_URL_REVIEWS)
                 ]).then(data => {
                     return Promise.all(data.map(el => el.json()));
                 }).then((data) => {
                     this.filmDetails.push(data[0])
                     this.videos.push(data[1].results[0])
+                    this.reviews.push(data[2].results)
+                    
                 })
                 .catch(err => {
                     console.log(err)
                 })
-                console.log(this.videos.key)
             }
         },
         mounted(){
