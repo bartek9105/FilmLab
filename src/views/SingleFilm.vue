@@ -54,12 +54,17 @@
                         <h5>Overview</h5>
                         <p>{{ film.overview }}</p>
                     </div>
+                    <div class="reviews">
                         <h5>Reviews</h5>
-                        <carousel :perPage="1">
-                            <slide v-for="(review, index) in reviews[0]">
-                                {{ review.content }}
+                        <carousel :perPage="1" class="reviews-carousel">
+                            <slide v-for="(review, index) in reviews[0]" class="slide">
+                                <p class="review-text">
+                                    {{ review.content }}
+                                </p> 
+                                <p class="review-author"> - {{ review.author }} </p>
                             </slide>
                         </carousel>
+                    </div>
                 </div>
                 <div class="right-section">
                     <div class="trailer" v-for="video in videos">
@@ -146,6 +151,19 @@
         font-size: 13px;
         line-height: 1.7;
     }
+    .review-text{
+        white-space: nowrap; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 800px;
+    }
+    .review-author{
+        margin-top: 30px;
+        color: rgb(153, 153, 153)
+    }
+    .reviews-carousel{
+        max-width: 800px;
+    }
     .single-details-header{
         width: 90%;
         margin: 0 auto;
@@ -184,6 +202,9 @@
                                 padding: 0 40px 30px 0;
                             }
                         }
+                    }
+                    .reviews{
+                        margin: 35px 0;
                     }
                 }
                 .right-section{
