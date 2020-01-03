@@ -56,7 +56,7 @@
                     </div>
                     <div class="reviews">
                         <h5>Reviews</h5>
-                        <carousel :perPage="1" class="reviews-carousel">
+                        <carousel :perPage="1" :navigationEnabled="true" paginationColor="#999999" paginationActiveColor="#fff" class="reviews-carousel" navigationNextLabel="&#9835;">
                             <slide v-for="(review, index) in reviews[0]" class="slide">
                                 <p class="review-text">
                                     {{ review.content }}
