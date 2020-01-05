@@ -13,9 +13,8 @@
                     <a href="#" @click.prevent="film.isLiked = !film.isLiked">
                         <i :class="['far', 'fa-heart', 'like-btn', {'likedBtn': film.isLiked}]" @click="addFavourite(film)"></i>
                     </a>
-
-                    <div class="film-details">
-                        {{ film.release_date }}
+                    <div>
+                        <span class="release-date">{{ film.release_date }}</span>
                     </div>
                 </div>
             </div>
@@ -152,6 +151,10 @@ export default {
                         text-align: center;
                     }
                 }
+            }
+            .release-date{
+                color: rgba(255, 255, 255, 0.4);
+                font-size: 14px;
             }
             .like-btn{
                 cursor: pointer;

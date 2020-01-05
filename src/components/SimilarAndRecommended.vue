@@ -11,8 +11,8 @@
                         <p>{{ film.title }}</p>
                     </router-link>
                     <i class="far fa-heart like-btn" @click="addFavourite(film)"></i>
-                    <div class="film-details">
-                        {{ film.release_date }}
+                    <div>
+                        <span class="release-date">{{ film.release_date }}</span>
                     </div>
                 </div>
             </div>
