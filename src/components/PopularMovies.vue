@@ -122,8 +122,13 @@ export default {
                 }
                 .img-container{
                     position: relative;
+                    overflow: hidden;
+                    .film-img{
+                        transition: all 0.3s;
+                    }
                     &:hover .film-img{
                         opacity: .3;
+                        transform: scale(1.1);
                     }
                     &:hover .middle{
                         opacity: 1;
