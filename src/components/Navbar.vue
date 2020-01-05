@@ -7,7 +7,8 @@
             </div>
         </router-link>
         <div class="cart">
-            <i class="fas fa-heart like-btn" @click="isHidden = !isHidden"></i> 
+            <i class="fas fa-heart cart-btn" @click="isHidden = !isHidden"></i> 
+            <div class="cart-count">{{ favourites.length }}</div>
             <Cart v-if="!isHidden"/>
         </div>
     </div>
@@ -15,6 +16,8 @@
 </template>
 
 <script>
+
+import {mapState} from 'vuex'
 
 import Cart from '../components/Cart'
 import Logo from '../components/Logo'
@@ -29,6 +32,11 @@ export default {
         return{
             isHidden: true
         }
+    },
+    computed: {
+        ...mapState([
+            'favourites'
+        ])
     }
 }
 </script>
@@ -47,10 +55,21 @@ export default {
         }
         .cart{
             position: relative;
-            .like-btn{
+            .cart-btn{
+                position: relative;
                 color: #fff;
                 text-decoration: none;
                 cursor: pointer;
+                transition: .3s ease-in-out;
+                &:hover{
+                    color: #FFA200;
+                }
+            }
+            .cart-count{
+                position: absolute;
+                font-size: 13px;
+                top: -5px;
+                right: -10px;
             }
         }
 
