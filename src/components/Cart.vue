@@ -1,7 +1,10 @@
 <template>
     <div class="cart">
         <ul class="cart-list">
-            <li v-for="(favourite, index) in favourites" :key="index">
+            <p v-if="favourites.length == 0">
+                Cart is empty
+            </p>
+            <li v-else v-for="(favourite, index) in favourites" :key="index">
                 <img :src="'http://image.tmdb.org/t/p/w92' + favourite.poster_path" alt="favourite.title" class="cart-poster">
                 <div class="col">
                     <span class="title">{{ favourite.title }}</span>
@@ -36,6 +39,7 @@ export default {
 
 <style lang="scss">
     .cart-list{
+        width: 250px;
         background-color: #fff;
         list-style: none;
         color: #000;
@@ -47,6 +51,9 @@ export default {
         right: 7px;
         top: 15px;
         z-index: 1;
+        p{
+            text-align: center;
+        }
         li{
             display: flex;
             margin-bottom: 30px;
