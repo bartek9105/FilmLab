@@ -152,6 +152,7 @@ export default {
                 cursor: pointer;
                 transition: ease-in-out .2s;
                 padding: 10px 0;
+                color: rgba(255, 255, 255, 0.4);
                 &:hover{
                     color: #FFA200;
                 }

@@ -127,7 +127,6 @@
                     this.filmDetails.push(data[0])
                     this.videos.push(data[1].results[0])
                     this.reviews.push(data[2].results)
-                    
                 })
                 .catch(err => {
                     console.log(err)

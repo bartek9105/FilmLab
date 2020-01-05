@@ -78,6 +78,9 @@
     font-family: 'Montserrat', sans-serif;
     color: #fff;
   }
+  a{
+    text-decoration: none;
+  }
   header{
     height: 500px;
     background-image: url('../assets/header-banner.jpg');

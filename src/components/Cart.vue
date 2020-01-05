@@ -46,6 +46,7 @@ export default {
         position: absolute;
         right: 7px;
         top: 15px;
+        z-index: 1;
         li{
             display: flex;
             margin-bottom: 30px;
@@ -53,6 +54,13 @@ export default {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
+                .title{
+                    overflow: hidden;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 200px;
+                }
                 .date{
                     font-size: 11px;
                 }
@@ -61,6 +69,7 @@ export default {
                         border: none;
                         background-color: transparent;
                         cursor: pointer;
+                        text-align: left;
                     }
             }
             .cart-poster{
