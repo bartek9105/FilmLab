@@ -5,12 +5,14 @@
                 Cart is empty
             </p>
             <li v-else v-for="(favourite, index) in favourites" :key="index">
-                <img :src="'http://image.tmdb.org/t/p/w92' + favourite.poster_path" alt="favourite.title" class="cart-poster">
-                <div class="col">
-                    <span class="title">{{ favourite.title }}</span>
-                    <span class="date">{{ favourite.release_date }}</span>
-                    <button class="delete-btn">Delete</button>
-                </div>
+                <router-link :to="'film/' + favourite.id">
+                    <img :src="'http://image.tmdb.org/t/p/w92' + favourite.poster_path" alt="favourite.title" class="cart-poster">
+                    <div class="col">
+                        <span class="title">{{ favourite.title }}</span>
+                        <span class="date">{{ favourite.release_date }}</span>
+                        <button class="delete-btn">Delete</button>
+                    </div>
+                </router-link>
             </li>
         </ul>
     </div>
