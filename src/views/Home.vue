@@ -1,6 +1,7 @@
 <template>
   <div class="home">
       <header>
+        <img src="http://image.tmdb.org/t/p/original/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg" class="hero">
         <Navbar/>
         <div class="header-section">
           <h1>Search for your favourite films in our library</h1>
@@ -83,8 +84,18 @@
   }
   header{
     height: 500px;
-    background-image: url('../assets/header-banner.jpg');
-      .header-section{
+    max-width: 100%;
+    .hero{
+        display: block;
+        width: 100vw;
+        height: 50vh;
+        object-fit: cover;
+        position: relative;
+    }
+        .header-section{
+        position: absolute;
+        top: 0;
+        left: 30%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -102,17 +113,14 @@
           padding: 0 10px;
           input{
             width: 500px;
-            background-color: transparent;
+            background-color: #fff;
             border: none;
-            border-bottom: 1px solid rgb(163, 163, 163);
             margin-bottom: 50px;
             height: 30px;
-            color: #fff;
+            color: #000;
+            padding-left: 10px;
             outline: none;
             transition: ease-in-out .2s;
-            &:focus{
-              border-bottom: 1px solid rgb(255, 255, 255);
-            }
             &::placeholder{
               color: #fff;
               opacity: .5;

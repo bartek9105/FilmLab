@@ -43,6 +43,9 @@ export default {
 
 <style lang="scss">
     .header-top{
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 90%;
         margin: 0 auto;
         padding: 30px 20px;

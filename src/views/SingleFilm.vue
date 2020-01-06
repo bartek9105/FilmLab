@@ -12,6 +12,7 @@
                     <i class="fas fa-circle dot"></i>
                     {{ film.genres[0].name }}
                 </p>
+                <img :src="'http://image.tmdb.org/t/p/w185' + film.poster_path" alt="poster" class="single-film-poster">
             </div>
         </header>
         <section class="details">
@@ -164,12 +165,12 @@
         max-width: 800px;
     }
     .single-details-header{
-        width: 90%;
         margin: 0 auto;
         height: calc(100% - 90px);
         display: flex;
         justify-content: center;
         flex-direction: column;
+        background-color: rgba(255, 162, 0, 0.486);
         .dot{
             font-size: 5px;
             padding: 8px;
